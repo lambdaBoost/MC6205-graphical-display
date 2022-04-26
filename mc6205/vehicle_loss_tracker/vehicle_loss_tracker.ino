@@ -73,10 +73,10 @@ void loop() {
 
   display.clear();
 
-  display.setCursor(0,1);
+  display.setCursor(0,0);
   display.write("RUSSIAN VEHICLE");
 
-  display.setCursor(5,2);
+  display.setCursor(5,1);
   display.write("LOSSES");
 
   display.setCursor(0,3);

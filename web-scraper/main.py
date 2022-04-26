@@ -37,7 +37,7 @@ async def get_data():
     res = soup.h3
     res=res.text
     losses = re.findall(r'\b\d+\b',res)
-    
+       
     losses = losses[0] + "," + losses[1] + "," + losses[2] + "," + losses[3] + "," + losses[4]   
     return(losses)
 
