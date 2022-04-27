@@ -11,6 +11,7 @@ import re
 from fastapi import FastAPI
 from pydantic import BaseModel
 import os
+import datetime
 
 
 URL = "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html"
@@ -42,7 +43,14 @@ async def get_data():
     return(losses)
 
 
+@app.get("/time")
+async def get_time():
+    now = datetime.datetime.now()
 
+    current_time = now.strftime("%H:%M")
+    current_time = current_time.replace(':','')
+    
+    return(int(current_time))
 
 
 

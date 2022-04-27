@@ -37,17 +37,12 @@ void setup() {
   }
  
   Serial.println("Connected to the WiFi network");
-
-
-  
-  rtc.begin(DateTime(F(__DATE__), F(__TIME__)));
-
   
 }
 
 void loop() {
   // get api data
-  results = httpGETRequest(URI);
+  results = httpGETRequest(URI + "/items/");
   Serial.println(results);
 
 
@@ -99,9 +94,11 @@ void loop() {
   display.write("slava ukraini");
 
 
-  delay(40000);
+  delay(60000);
   display.clear();
 
+//test screen - writes all available blocks
+/*
   for (int r=0; r<=9; r++){
     for(int c=0; c<=15;c++){
   
@@ -113,19 +110,20 @@ void loop() {
 
   }
   }
+  
+  
  
   
   delay(5000);
+  */
 
   display.clear();
-  DateTime tm = rtc.now();
-  int hr = tm.hour();
-  int mn = tm.minute();
+  tm = httpGETRequest(URI + "/time/");
 
-  int T1 = (hr / 10) % 10;
-  int T2 = hr % 10;
-  int T3 = (mn / 10) % 10;
-  int T4 = mn % 10;
+  int T1 = (tm / 1000) %10;
+  int T2 = (tm / 100) %10;
+  int T3 = (tm / 10) %10;
+  int T4 = tm % 10
 
   display.writeBigDigit(0,2,T1);
   display.writeBigDigit(4,2,T2);
