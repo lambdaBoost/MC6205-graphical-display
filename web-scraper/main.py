@@ -43,7 +43,7 @@ async def get_data():
     return(losses)
 
 
-@app.get("/time")
+@app.get("/time/")
 async def get_time():
     now = datetime.datetime.now()
 
