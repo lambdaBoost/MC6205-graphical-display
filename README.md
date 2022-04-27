@@ -1,7 +1,8 @@
 # MC6205-graphical-display
-graphical display on old neon plasma screen
+graphical display on old neon plasma screen. 
 
 ![alt text](https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/vehicle_loss_tracker.jpg "Live update on Russian vehicle losses - but could be used for pretty much anything else")
+I'm showing this because it's funny - tracking wrecked Soviet era vehicles on a Soviet era device.
 
 This is a two part project using the Soviet Ukrainian MC6205 plasma display.
 Part 1 uses the unaltered device with an ESP32 in order to display text info from any suitable webpage or API.
@@ -12,7 +13,7 @@ The device itself is a monochrome neon plasma display, produced throughout the 1
 Included in the package is an EEPROM which converts the serial inputs into text characters. This unfortunately mean the MC6205 is only capable of displaying text, but part 2 will see me re-wiring and adding a custom PCB to allow for full graphical display.
 
 ## Vehicle Loss Tracker
-To demo part 1, I'm using the device to provide live updates on Russian vehicle losses. I'm doing this because it's funny - tracking wrecked Soviet era vehicles on a Soviet era device. Data is from the excellent [Oryx loss tracker](https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html)
+To demo part 1, I'm using the device to provide live updates on Russian vehicle losses. Data is from the excellent [Oryx loss tracker](https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html)
 
 Fortunately someone else did the hard work and wrote an arduino library [arduino library](https://github.com/holzachr/MS6205-arduino-library) to display text to the display, so all I needed to do was hook it up to the ESP32 (following the instructions from the linked repo).
 
