@@ -7,7 +7,6 @@
 
 
 String URI = "http://192.168.1.217:8080";
-
 //lazy way to get wifi credentials in. 
 const char* ssid = "";
 const char* password =  "";
