@@ -6,7 +6,7 @@
 #include <Arduino_JSON.h>
 
 
-String URI = "http://192.168.1.217:8080/";
+String URI = "http://192.168.1.217:8080";
 String results;
 
 //lazy way to get wifi credentials in. 
