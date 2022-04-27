@@ -1,7 +1,7 @@
 # MC6205-graphical-display
 graphical display on old neon plasma screen
 
-![alt text](https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/vehicle_tracker.jpg "Live update on Russian vehicle losses - but could be used for pretty much anything else")
+![alt text](https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/vehicle_loss_tracker.jpg "Live update on Russian vehicle losses - but could be used for pretty much anything else")
 
 This is a two part project using the Soviet Ukrainian MC6205 plasma display.
 Part 1 uses the unaltered device with an ESP32 in order to display text info from any suitable webpage or API.
