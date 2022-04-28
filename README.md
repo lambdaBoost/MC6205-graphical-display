@@ -38,9 +38,8 @@ To build the vehicle loss tracker do the following:
 * Hook up the MC6205 to the ESP32 and 12v power supply as detailed in [holzachr's repo](https://github.com/holzachr/MS6205-arduino-library)
 * clone this repo to the raspberry pi
 * on the pi, cd into the web-scraper directory
-* run the following: `docker build -t vehicle_losses_scraper .`
-* then run the docker container with: `docker run -d --name vehicle_loss_scraper -p 8080:8080 --restart always vehicle_loss_scraper`
-* the API should now be active - note the pi's IP address (ifconfig)
+* then build and run the docker container with: `docker-compose up -d`
+* the API should now be active - note the pi's IP address (`ifconfig`)
 * open the file at /mc6205/vehicle_loss_tracker.ino
 * edit the first 3 lines (after the library imports) to include the correct IP address for the pi, your wifi network SSID and your wifi password (this is a lazy way of getting credentials - I'll add a proper wifi manager later).
 * upload the edited .ino file to the esp32. I had to disconnect GPIO12 during the upload for it to work.
