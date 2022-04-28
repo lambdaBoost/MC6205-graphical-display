@@ -24,8 +24,10 @@ Data is provided by a custom API which runs on a seperate machine. In my case, t
 
 For now, the setup is wired up via a breadboard. When part 2 is complete it will be entirely contained in the original enclosure.
 
-![alt text](https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/clock2.jpg "Live update on Russian vehicle losses - but could be used for pretty much anything else")
-*It's a clock too, because why not*
+<p align="center">
+  <img src="https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/clock2.jpg" width="600">
+  <figcaption><i>It's a clock too, because why not.</i></figcaption>
+</p>
 
 ## Prerequisites
 To build the vehicle tracker display in the exact format shown here you will need:
