@@ -7,11 +7,12 @@
 
 
 String URI = "http://192.168.1.217:8080";
-String results;
-
 //lazy way to get wifi credentials in. 
 const char* ssid = "";
 const char* password =  "";
+
+String results;
+String tm_s;
 
 int const shiftRegisterLatchPin  = 15; // GPIO15 = Pin D8 on NodeMCU boards. Pin 12 on 74HC595.
 int const shiftRegisterClockPin  = 14; // GPIO14 = Pin D5 on NodeMCU boards. Pin 11 on 74HC595.
@@ -60,12 +61,6 @@ void loop() {
   total.replace("\"","");
   cap.replace("\"","");
   
-  Serial.println(total);
-  Serial.println(dest);
-  Serial.println(dam);
-  Serial.println(ab);
-  Serial.println(cap);
-
   display.clear();
 
   display.setCursor(0,0);
@@ -118,12 +113,19 @@ void loop() {
   */
 
   display.clear();
-  tm = httpGETRequest(URI + "/time/");
-
+  tm_s = httpGETRequest(URI + "/time/");
+  int tm = tm_s.toInt();
   int T1 = (tm / 1000) %10;
   int T2 = (tm / 100) %10;
   int T3 = (tm / 10) %10;
-  int T4 = tm % 10
+  int T4 = tm % 10;
+  
+  Serial.println(tm_s);
+  Serial.println(tm);
+  Serial.println(T1);
+  Serial.println(T2);
+  Serial.println(T3);
+  Serial.println(T4);
 
   display.writeBigDigit(0,2,T1);
   display.writeBigDigit(4,2,T2);

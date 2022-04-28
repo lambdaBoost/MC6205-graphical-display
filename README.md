@@ -43,5 +43,6 @@ To build the vehicle loss tracker do the following:
 * the API should now be active - note the pi's IP address (ifconfig)
 * open the file at /mc6205/vehicle_loss_tracker.ino
 * edit the first 3 lines (after the library imports) to include the correct IP address for the pi, your wifi network SSID and your wifi password (this is a lazy way of getting credentials - I'll add a proper wifi manager later).
+* upload the edited .ino file to the esp32. I had to disconnect GPIO12 during the upload for it to work.
 * Enjoy!
 
