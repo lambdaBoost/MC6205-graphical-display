@@ -4,7 +4,7 @@ graphical display on old neon plasma screen.
 <p align="center">
   <img src="https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/vehicle_loss_tracker2.jpg" width="600">
 </p>
-*I'm showing this because it's funny - tracking wrecked Soviet era vehicles on a Soviet era device. Also, note the dead display line on the 'abandoned' section. We'll fix that later.*
+_I'm showing this because it's funny - tracking wrecked Soviet era vehicles on a Soviet era device. Also, note the dead display line on the 'abandoned' section. We'll fix that later._
 
 This is a two part project using the Soviet Ukrainian MC6205 plasma display.
 Part 1 uses the unaltered device with an ESP32 in order to display text info from any suitable webpage or API.
