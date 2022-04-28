@@ -2,6 +2,7 @@
 graphical display on old neon plasma screen. 
 
 ![](https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/vehicle_loss_tracker2.jpg)
+<img src="https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/vehicle_loss_tracker2.jpg" width="450">
 *I'm showing this because it's funny - tracking wrecked Soviet era vehicles on a Soviet era device. Also, note the dead display line on the 'abandoned' section. We'll fix that later.*
 
 This is a two part project using the Soviet Ukrainian MC6205 plasma display.
