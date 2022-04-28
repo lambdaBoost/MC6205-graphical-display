@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  vehicle_loss_tracker:
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    build: .
+    ports:
+      - "8080:8080"
