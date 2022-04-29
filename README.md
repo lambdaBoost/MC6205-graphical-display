@@ -1,8 +1,11 @@
 # MC6205-graphical-display
 graphical display on old neon plasma screen. 
 
-![alt text](https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/vehicle_loss_tracker.jpg "Live update on Russian vehicle losses - but could be used for pretty much anything else")
-*I'm showing this because it's funny - tracking wrecked Soviet era vehicles on a Soviet era device. Also, note the dead display line on the 'abandoned' section. We'll fix that later.*
+<p align="center">
+  <img src="https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/vehicle_loss_tracker2.jpg" width="600">
+  <figcaption><i>I'm showing this because it's funny - tracking wrecked Soviet era vehicles on a Soviet era device. Also, note the dead display line on the 'abandoned' section. We'll fix that later.</i></figcaption>
+</p>
+
 
 This is a two part project using the Soviet Ukrainian MC6205 plasma display.
 Part 1 uses the unaltered device with an ESP32 in order to display text info from any suitable webpage or API.
@@ -20,6 +23,11 @@ Fortunately someone else did the hard work and wrote an arduino library [arduino
 Data is provided by a custom API which runs on a seperate machine. In my case, the API runs from a raspberry pi and is queried by the ESP32. This avoided having to attempt to parse the webpage in Arduino...which would be a nightmare. The code for part 2 will be in Micropython which I find much easier to work with.
 
 For now, the setup is wired up via a breadboard. When part 2 is complete it will be entirely contained in the original enclosure.
+
+<p align="center">
+  <img src="https://github.com/lambdaBoost/MC6205-graphical-display/blob/main/docs/clock2.jpg" width="600">
+  <figcaption><i>It's a clock too, because why not.</i></figcaption>
+</p>
 
 ## Prerequisites
 To build the vehicle tracker display in the exact format shown here you will need:
