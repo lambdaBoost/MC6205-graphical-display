@@ -117,7 +117,7 @@ if(rotate_button_state == 0){
                  //generate new piece. This is a monumentally stupid way of doing it but
      //i can't be bothered figuring out arrays and pointers and all that nonsense.
      //it's not the 1980's...just use numpy.
-          int pieceIndex = random(0,6);
+          int pieceIndex = random(0,7);
 
         //right L
           if(pieceIndex == 0){
@@ -200,7 +200,7 @@ if(rotate_button_state == 0){
      //generate new piece. This is a monumentally stupid way of doing it but
      //i can't be bothered figuring out arrays and pointers and all that nonsense.
      //it's not the 1980's...just use numpy.
- int pieceIndex = random(0,6);
+ int pieceIndex = random(0,7);
 
         //right L
           if(pieceIndex == 0){
@@ -303,10 +303,12 @@ for (int r = 9; r>=0; r--){
     }
   }
 
-  if(rowSum == 16){
-
+  if(rowSum >= 12){
+    
+      for (int R=r; R>=1; R--){
           for(int C=0; C<=15; C++){
-            d[r][C] = d[r-1][C];
+            d[R][C] = d[R-1][C];
+            }
     }
       
 
