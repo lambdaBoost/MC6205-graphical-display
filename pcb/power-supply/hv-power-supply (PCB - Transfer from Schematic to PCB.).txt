@@ -1,0 +1,15 @@
+Transfer from Schematic to PCB.
+-------------------------------
+
+Report Written:     Sunday, May 15, 2022
+Design Path:        D:\projects\mc6205\pcb\power-supply\hv-power-supply.pcb
+Design Title:       
+Created:            15/05/2022 18:24:55
+Last Saved:         15/05/2022 18:25:18
+Editing Time:       0 min
+Units:              thou (precision 0)
+
+Net class "Signal" was not defined, but has been created. Please check the values in the PCB design.
+Net class "Ground" was not defined, but has been created. Please check the values in the PCB design.
+
+End Of Report.

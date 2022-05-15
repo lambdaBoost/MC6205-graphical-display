@@ -1,0 +1,71 @@
+Design Rule Check Report
+------------------------
+
+Report Written:     Sunday, May 15, 2022
+Project Path:       D:\projects\mc6205\pcb\power-supply\power-supply.prj
+Design Path:        D:\projects\mc6205\pcb\power-supply\hv-power-supply.pcb
+Design Title:       
+Created:            15/05/2022 18:24:55
+Last Saved:         15/05/2022 18:53:59
+Editing Time:       29 min
+Units:              thou (precision 0)
+
+
+Results
+=======
+
+Pad to Pad Error (P-P) between (10425 9998) and (10425 9993) on Layer "[All]".
+    Error between Component Pad Q2.1 (Net 'N0016') and Component Pad Q2.2 (Net 'N0014'), Gap is 5 needs to be 10.
+Pad to Pad Error (P-P) between (10425 9939) and (10425 9934) on Layer "[All]".
+    Error between Component Pad Q2.2 (Net 'N0014') and Component Pad Q2.3 (Net 'GND'), Gap is 5 needs to be 10.
+
+Number of errors found : 2
+
+
+Settings
+========
+
+
+Spacings
+
+=========
+
+Tracks        Yes
+Pads and Vias Yes
+Shapes        Yes
+Text          Yes
+Board         Yes
+Drills        Yes
+Components    Yes
+
+
+Manufacturing
+
+==============
+
+Drill Breakout                  No
+Drill Backoff                   No
+Silkscreen Overlap              No
+Copper Text In Board            No
+Min Track Width                 No
+Min Annular Ring                No
+Min Paste Size                  No
+Vias In Pads                    No
+Unplated Vias                   No
+Unplated Pads With Inner Tracks No
+
+
+Nets
+
+=====
+
+Net Completion               Yes
+Dangling Tracks              Yes
+Net Track Length Differences No
+Nets without Components      No
+Nets on No Connect pins      No
+Nets on No Connect pins      No
+
+
+
+End Of Report.
