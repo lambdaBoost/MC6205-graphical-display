@@ -9029,7 +9029,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x04") (at 369.57 68.58 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 4aca60e3-f8df-4367-8b12-a8182ed36464)
-    (property "Reference" "J?" (id 0) (at 372.11 68.5799 0)
+    (property "Reference" "J11" (id 0) (at 372.11 68.5799 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x04" (id 1) (at 372.11 71.1199 0)
@@ -11669,7 +11669,7 @@
       (reference "J10") (unit 1) (value "Conn_01x05_Male") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical")
     )
     (path "/4aca60e3-f8df-4367-8b12-a8182ed36464"
-      (reference "J?") (unit 1) (value "Conn_01x04") (footprint "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical")
+      (reference "J11") (unit 1) (value "Conn_01x04") (footprint "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical")
     )
     (path "/859f3a46-66b3-4c1d-837a-8a588a31914b"
       (reference "Q1") (unit 1) (value "MPSA42") (footprint "Package_TO_SOT_THT:TO-92_Inline")
