@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "(6.0.5)"
     },
-    "CreationDate": "2022-05-25T23:49:35+01:00"
+    "CreationDate": "2022-07-20T21:29:26+01:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -24,8 +24,8 @@
   "DesignRules": [
     {
       "Layers": "Outer",
-      "PadToPad": 0.18,
-      "PadToTrack": 0.18,
+      "PadToPad": 0.15,
+      "PadToTrack": 0.15,
       "TrackToTrack": 0.18,
       "MinLineWidth": 0.25
     }
@@ -39,16 +39,6 @@
     {
       "Path": "screen-driver-B_Cu.gbl",
       "FileFunction": "Copper,L2,Bot",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "screen-driver-F_Paste.gtp",
-      "FileFunction": "SolderPaste,Top",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "screen-driver-B_Paste.gbp",
-      "FileFunction": "SolderPaste,Bot",
       "FilePolarity": "Positive"
     },
     {
