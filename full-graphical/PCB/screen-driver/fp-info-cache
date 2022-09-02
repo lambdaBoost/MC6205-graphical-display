@@ -1,4 +1,4 @@
-20239479207326063
+20247779052657657
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -2365,6 +2365,13 @@ speaker CUI
 0
 2
 2
+CD4017BE
+DIP794W45P254L1969H508Q16
+
+
+0
+16
+16
 Calibration_Scale
 Gauge_10mm_Type1_CopperTop
 Gauge, Massstab, 10mm, CopperTop, Type 1,
@@ -52086,13 +52093,13 @@ One digit LED 7 segment SA39-11 SC39-11 SA39-12 SC39-12
 0
 10
 10
-ESP32-DEVKITC-32D
-MODULE_ESP32-DEVKITC-32D
+ESP32-DEVKIT-V1
+MODULE_ESP32_DEVKIT_V1
 
 
 0
-38
-38
+30
+30
 Ferrite_THT
 LairdTech_28C0236-0JW-10
 Ferrite, vertical, LairdTech 28C0236-0JW-10, https://assets.lairdtech.com/home/brandworld/files/28C0236-0JW-10.pdf, JW Miller core https://www.bourns.com/products/magnetic-products/j.w.-miller-through-hole-ferrite-beads-emi-filters
@@ -78714,6 +78721,13 @@ rotary encoder
 0
 5
 4
+SC0915
+MODULE_SC0915
+
+
+0
+53
+53
 Sensor
 Aosong_DHT11_5.5x12.0_P2.54mm
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/DHT11.pdf
@@ -85784,3 +85798,24 @@ varistor SIOV
 0
 2
 2
+daughter_boards
+level_shifter
+
+
+0
+12
+12
+iel
+iel-0-iv
+
+
+0
+12
+10
+soviet
+YH5504KH01
+
+
+0
+42
+42
