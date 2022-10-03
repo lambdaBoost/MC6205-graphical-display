@@ -1,6 +1,8 @@
 from machine import Pin, SPI
 import rp2
 from time import sleep, sleep_us, sleep_us
+import json
+import anode_write
 
 
 import machine
@@ -15,7 +17,8 @@ group_cathode_rst = Pin(5, Pin.OUT)
 individual_cathode_clk = Pin(4, Pin.OUT)
 individual_cathode_rst = Pin(3, Pin.OUT)
 
-
+#test image for now
+display_image = anode_write.read_test_file()
     
 
 @rp2.asm_pio(
@@ -97,7 +100,8 @@ def matrix_row_2():
     set(pins, 1)                     # {3} set LATCH high
     set(y, 2)         .side(0)   [2]   # {4} reset counter
     set(pins, 0)                     # {5} set LATCH low
-    #nop()								#delay for blanking operation
+    nop()								#delay for blanking operation
+    nop()
     #set(y, 2)
     jmp('reset_x')                   # {6} restart loop
 
@@ -117,14 +121,13 @@ def matrix_row_2():
 
 """
 def latch_row():
-
     wrap_target()
     set(pins, 1)  [6]                   # {3} set LATCH high
     set(pins, 0)                     # {5} set LATCH low
   
     
 """   
-sm0 = rp2.StateMachine(0, matrix_row_2, freq=5000000,
+sm0 = rp2.StateMachine(0, matrix_row_2, freq=3000000,
                       sideset_base=Pin(2),    # CLOCK pin
                       set_base=Pin(1),        # LATCH pin
                       out_base=Pin(0),        # DATA pin
@@ -181,11 +184,11 @@ while True:
                 #value = 1431655765 #alternating 10 pattern
             #value = 0b000000000000000000000000000000
             
-           
+ 
 
             #data
             sm0.put(value)
-            sm0.put(0b11111111111111111111111111111111)
+            sm0.put(0b000000000000000000000000000000)
             sm0.put(value)
             sleep_us(CATHODE_HOLD_TIME)
             
@@ -193,7 +196,9 @@ while True:
             sm0.put(0b000000000000000000000000000000)
             sm0.put(0b000000000000000000000000000000)
             sm0.put(0b000000000000000000000000000000)
-            sleep_us(BLANKING_INTERVAL)
+            #sleep_us(BLANKING_INTERVAL)
+            
+
             
 
             #sm0.active(0)
@@ -205,7 +210,3 @@ while True:
 
 
         
-    
-
-
-
