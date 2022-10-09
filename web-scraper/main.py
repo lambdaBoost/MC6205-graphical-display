@@ -15,7 +15,7 @@ from pydantic import BaseModel
 import os
 import datetime
 
-import cv2
+from PIL import Image
 import numpy as np
 import json
 
@@ -69,12 +69,11 @@ async def get_test_image():
     
     IMAGE_FILE = "./imgs/monochrome_test_card_scaled.png"
 
-    img_in = cv2.imread(IMAGE_FILE)
-    
+    image = Image.open(IMAGE_FILE)
+    image = image.rotate(90)
+    image = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT) 
+    img_out = np.asarray(image)
 
-    
-    img_out = cv2.rotate(img_in, cv2.ROTATE_90_CLOCKWISE)
-    img_out = cv2.flip(img_out,1)
     img_out = (img_out*(1/255)).astype(int)
     img_out = img_out[:,:,0]
     img_out = img_out.tolist()
