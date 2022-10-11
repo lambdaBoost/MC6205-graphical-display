@@ -1,5 +1,6 @@
 from array import array
 import json
+import urequests
 
 #order the anodes are illuminated in
 """
@@ -47,4 +48,11 @@ def get_row(array, row_num):
     
     #convert to 100 length binary string
     row_binary = row_value.format('#0100b')
+    
+def get_api_image(uri):
+        
+    w=urequests.get(uri)
+    response = w.text
+    
+    return response
     

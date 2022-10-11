@@ -6,15 +6,43 @@ import rp2
 from time import sleep, sleep_us, sleep_us
 import json
 import anode_write
-
-from anode_write import anode_order
-
-
+import network
 import machine
+
+from anode_write import anode_order, get_api_image
+from secrets import secrets
+
+
+try:
+  import usocket as socket
+except:
+  import socket
+  
+  
+ssid = secrets['ssid']
+pw = secrets['pw']
+
+URI = "http://192.168.1.215:8080"
+
+
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+
+wlan.connect(ssid, pw)
+
+timeout = 10
+while timeout > 0:
+    if wlan.status() >= 3:
+        break
+    timeout -= 1
+    print('Waiting for connection...')
+    sleep(1)
+   
+wlan_status = wlan.status()
 
 
 CATHODE_PULSE_WIDTH = 1
-CATHODE_HOLD_TIME = 100
+CATHODE_HOLD_TIME = 10
 BLANKING_INTERVAL = 1
 
 group_cathode_clk = Pin(6, Pin.OUT)
@@ -23,7 +51,8 @@ individual_cathode_clk = Pin(4, Pin.OUT)
 individual_cathode_rst = Pin(3, Pin.OUT)
 
 #test image for now
-display_image = anode_write.read_test_file()
+#display_image = anode_write.read_test_file()
+display_image = get_api_image(URI+"/test_image/")
 
 
 
@@ -135,7 +164,7 @@ while True:
             #sm0.put(0b000000000000000000000000000000)
             #sm0.put(0b000000000000000000000000000000)
             #sleep_us(BLANKING_INTERVAL)
-            
+
             anode_count = anode_count + 1
             
 

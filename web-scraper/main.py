@@ -36,7 +36,6 @@ class Item(BaseModel):
 app = FastAPI()
 
 
-
 @app.get("/items/")
 async def get_data():
 
@@ -67,15 +66,43 @@ async def get_test_image():
     processes and returns the test image for display in json format
     """
     
-    IMAGE_FILE = "./imgs/monochrome_test_card_scaled.png"
+    IMAGE_FILE = "./imgs/hill-test-color.png"
+    
+    
+    def binarize(img):
+
+      #initialize threshold
+      thresh=128
+      #convert image to greyscale
+      img=img.convert('L') 
+      width,height=img.size
+
+      #traverse through pixels 
+      for x in range(width):
+        for y in range(height):
+
+          #if intensity less than threshold, assign white
+          if img.getpixel((x,y)) < thresh:
+            img.putpixel((x,y),0)
+
+          #if intensity greater than threshold, assign black 
+          else:
+            img.putpixel((x,y),255)
+
+      return img
+
 
     image = Image.open(IMAGE_FILE)
+    image = image.resize((100,100)) #simple resizing for now
+    
+    image=binarize(image)
+    
     image = image.rotate(90)
     image = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT) 
     img_out = np.asarray(image)
 
     img_out = (img_out*(1/255)).astype(int)
-    img_out = img_out[:,:,0]
+    #img_out = img_out[:,:,0]
     img_out = img_out.tolist()
 
     #convert to list of ints
