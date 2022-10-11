@@ -81,8 +81,8 @@ async def get_test_grayscale_image():
     json_compatible_item_data = jsonable_encoder(display_image)
     return JSONResponse(content=json_compatible_item_data)
 
-@app.get("grayscale_image/{image_id}")
-async def get_grayscale_image(image_id: str):
+@app.get("/grayscale_image/")
+async def get_grayscale_image(image_id:str):
     
     """
     returns a numbered image from the image sequence folder

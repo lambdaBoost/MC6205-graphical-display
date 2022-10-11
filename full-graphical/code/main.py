@@ -133,7 +133,7 @@ individual_cathode_rst.value(0)
 
 loop_start_time = time.now()
 img_counter = 0
-display_image = get_api_image(URI+"/grayscale_image/"+image_list[img_counter])
+display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
 
 while True:
     
@@ -150,7 +150,7 @@ while True:
         else:
             img_counter = 0
             
-        display_image = get_api_image(URI+"/grayscale_image/"+image_list[img_counter])
+        display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
         
         
     
