@@ -90,3 +90,10 @@ async def get_grayscale_image(image_id:str):
     display_image = image_tools.return_grayscale_image(IMAGE_DIRECTORY + image_id + ".PNG")
     json_compatible_item_data = jsonable_encoder(display_image)
     return JSONResponse(content=json_compatible_item_data)
+
+@app.get("/waifu/")
+async def get_waifu():
+    
+    display_image = image_tools.return_waifu()
+    json_compatible_item_data = jsonable_encoder(display_image)
+    return JSONResponse(content=json_compatible_item_data)

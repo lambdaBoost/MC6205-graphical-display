@@ -19,11 +19,11 @@ except:
   import socket
   
 MIN_IMAGE_NUMBER = 1 #min image designation in folder
-MAX_IMAGE_NUMBER = 6
-FRAME_DELAY = 20 #delay between images (seconds)
+MAX_IMAGE_NUMBER = 17
+FRAME_DELAY = 60 #delay between images (seconds)
 
 CATHODE_PULSE_WIDTH = 1
-CATHODE_HOLD_TIME = 10
+CATHODE_HOLD_TIME = 0
 BLANKING_INTERVAL = 1
 
 group_cathode_clk = Pin(6, Pin.OUT)
@@ -56,9 +56,9 @@ while timeout > 0:
 wlan_status = wlan.status()
 
 
-
+#options for the api
 #display_image = get_api_image(URI+"/test_image/")
-image_list = [str(i) for i in range(MIN_IMAGE_NUMBER, MAX_IMAGE_NUMBER + 1)]
+#image_list = [str(i) for i in range(MIN_IMAGE_NUMBER, MAX_IMAGE_NUMBER + 1)]
 #display_image = get_api_image(URI+"/test_grayscale_image/")
 
 
@@ -85,19 +85,19 @@ def matrix_row_2():
     out(pins, 1)       .side(1)      # {1} mov 1bit to DATA pin
                                      #     and set CLOCK high
     jmp(x_dec, 'delay')              # {2} jump to 'delay'
-    jmp(y_dec,'reset_x')
+    jmp(y_dec,'reset_x') .side(0) [2]
     
     set(pins, 1)                     # {3} set LATCH high
     set(y, 3)         .side(0)   [2]   # {4} reset counter
     set(pins, 0)                     # {5} set LATCH low
-    nop()								#delay for blanking operation
-    nop()
+    #nop()								#delay for blanking operation
+    #nop()
     #set(y, 2)
     jmp('reset_x')                   # {6} restart loop
 
     
     label('delay')
-    nop()                            # {3}
+    #nop()                            # {3}
     jmp('bitloop')     .side(0)  [2] # {4-6}
     
     #label('setup')
@@ -111,7 +111,7 @@ def matrix_row_2():
 #don't really understand. Don't care either
 rp2.PIO(0).remove_program()
   
-sm0 = rp2.StateMachine(0, matrix_row_2, freq=5000000,
+sm0 = rp2.StateMachine(0, matrix_row_2, freq=3500000,
                       sideset_base=Pin(2),    # CLOCK pin
                       set_base=Pin(1),        # LATCH pin
                       out_base=Pin(0),        # DATA pin
@@ -131,27 +131,37 @@ individual_cathode_rst.value(1)
 sleep_us(CATHODE_PULSE_WIDTH)
 individual_cathode_rst.value(0)
 
-loop_start_time = time.now()
-img_counter = 0
-display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
+loop_start_time = time()
+#img_counter = 0
+#display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
+display_image = get_api_image(URI+"/waifu/")
+
 
 while True:
     
     
-    current_time = time.now()
+    current_time = time()
     
     #fetch new image
     #scrappy but not sure if itertools available in Upython
+    
     if current_time - loop_start_time > FRAME_DELAY:
-        loop_start_time = time.now()
-        if img_counter < len(image_list-1):
+        loop_start_time = time()
+        
+        """
+        #if loading images from folder
+        if img_counter <= len(image_list)-2:
             img_counter = img_counter + 1
             
         else:
             img_counter = 0
             
         display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
-        
+        """
+        try:
+            display_image = get_api_image(URI+"/waifu/")
+        except:
+            display_image = display_image
         
     
     anode_count = 0
@@ -186,8 +196,15 @@ while True:
                 sm0.put(row[2])
                 sm0.put(row[3])
 
-                sleep_us(CATHODE_HOLD_TIME)
-            
+                #sleep_us(CATHODE_HOLD_TIME)
+                
+                            #blanking - do before data to shorten delay
+                #sm0.put(0b000000000000000000000000000000)
+                #sm0.put(0b000000000000000000000000000000)
+                #sm0.put(0b000000000000000000000000000000)
+                #sm0.put(0b000000000000000000000000000000)
+                #sleep_us(BLANKING_INTERVAL)
+                
             #then layer 1 once
             row = display_image[0][anode_num]
             sm0.put(row[0])          
@@ -195,7 +212,7 @@ while True:
             sm0.put(row[2])
             sm0.put(row[3])
 
-            sleep_us(CATHODE_HOLD_TIME)      
+            #sleep_us(CATHODE_HOLD_TIME)      
             
             #blanking - do before data to shorten delay
             #sm0.put(0b000000000000000000000000000000)

@@ -4,4 +4,5 @@ pydantic==1.9.0
 requests
 bs4
 numpy
-Pillow
+Pillow==9.2.0
+

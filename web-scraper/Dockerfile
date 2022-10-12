@@ -4,6 +4,8 @@ WORKDIR /code
 
 COPY imgs/ /code/imgs
 
+COPY api_tools /code/api_tools
+
 COPY ./requirements.txt /code/requirements.txt 
 
 COPY ./main.py /code/
