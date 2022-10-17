@@ -20,7 +20,7 @@ except:
   
 MIN_IMAGE_NUMBER = 1 #min image designation in folder
 MAX_IMAGE_NUMBER = 17
-FRAME_DELAY = 60 #delay between images (seconds)
+FRAME_DELAY = 10 #delay between images (seconds)
 
 CATHODE_PULSE_WIDTH = 1
 CATHODE_HOLD_TIME = 0
@@ -58,7 +58,7 @@ wlan_status = wlan.status()
 
 #options for the api
 #display_image = get_api_image(URI+"/test_image/")
-#image_list = [str(i) for i in range(MIN_IMAGE_NUMBER, MAX_IMAGE_NUMBER + 1)]
+image_list = [str(i) for i in range(MIN_IMAGE_NUMBER, MAX_IMAGE_NUMBER + 1)]
 #display_image = get_api_image(URI+"/test_grayscale_image/")
 
 
@@ -111,7 +111,7 @@ def matrix_row_2():
 #don't really understand. Don't care either
 rp2.PIO(0).remove_program()
   
-sm0 = rp2.StateMachine(0, matrix_row_2, freq=5000000,
+sm0 = rp2.StateMachine(0, matrix_row_2, freq=3500000,
                       sideset_base=Pin(2),    # CLOCK pin
                       set_base=Pin(1),        # LATCH pin
                       out_base=Pin(0),        # DATA pin
@@ -132,9 +132,9 @@ sleep_us(CATHODE_PULSE_WIDTH)
 individual_cathode_rst.value(0)
 
 loop_start_time = time()
-#img_counter = 0
-#display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
-display_image = get_api_image(URI+"/waifu/")
+img_counter = 0
+display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
+
 
 
 while True:
@@ -148,12 +148,13 @@ while True:
     if current_time - loop_start_time > FRAME_DELAY:
         loop_start_time = time()
         
-        sm0.put(0b11111111111111111111111111111111)
+                
+        sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)
         
-        """
+
         #if loading images from folder
         if img_counter <= len(image_list)-2:
             img_counter = img_counter + 1
@@ -162,11 +163,8 @@ while True:
             img_counter = 0
             
         display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
-        """
-        try:
-            display_image = get_api_image(URI+"/waifu/")
-        except:
-            display_image = display_image
+
+
         
     
     anode_count = 0

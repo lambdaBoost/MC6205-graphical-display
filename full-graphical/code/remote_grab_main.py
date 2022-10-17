@@ -111,7 +111,7 @@ def matrix_row_2():
 #don't really understand. Don't care either
 rp2.PIO(0).remove_program()
   
-sm0 = rp2.StateMachine(0, matrix_row_2, freq=5000000,
+sm0 = rp2.StateMachine(0, matrix_row_2, freq=3500000,
                       sideset_base=Pin(2),    # CLOCK pin
                       set_base=Pin(1),        # LATCH pin
                       out_base=Pin(0),        # DATA pin
@@ -148,7 +148,8 @@ while True:
     if current_time - loop_start_time > FRAME_DELAY:
         loop_start_time = time()
         
-        sm0.put(0b11111111111111111111111111111111)
+                
+        sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)

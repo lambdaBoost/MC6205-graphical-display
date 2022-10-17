@@ -20,10 +20,10 @@ except:
   
 MIN_IMAGE_NUMBER = 1 #min image designation in folder
 MAX_IMAGE_NUMBER = 17
-FRAME_DELAY = 60 #delay between images (seconds)
+FRAME_DELAY = 10 #delay between images (seconds)
 
 CATHODE_PULSE_WIDTH = 1
-CATHODE_HOLD_TIME = 0
+CATHODE_HOLD_TIME = 1
 BLANKING_INTERVAL = 1
 
 group_cathode_clk = Pin(6, Pin.OUT)
@@ -111,7 +111,7 @@ def matrix_row_2():
 #don't really understand. Don't care either
 rp2.PIO(0).remove_program()
   
-sm0 = rp2.StateMachine(0, matrix_row_2, freq=5000000,
+sm0 = rp2.StateMachine(0, matrix_row_2, freq=5500000,
                       sideset_base=Pin(2),    # CLOCK pin
                       set_base=Pin(1),        # LATCH pin
                       out_base=Pin(0),        # DATA pin
@@ -134,8 +134,8 @@ individual_cathode_rst.value(0)
 loop_start_time = time()
 #img_counter = 0
 #display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
-display_image = get_api_image(URI+"/waifu/")
-
+#display_image = get_api_image(URI+"/waifu/") #for remote
+display_image = get_api_image(URI+"/stored_waifu/") #for local
 
 while True:
     
@@ -148,7 +148,8 @@ while True:
     if current_time - loop_start_time > FRAME_DELAY:
         loop_start_time = time()
         
-        sm0.put(0b11111111111111111111111111111111)
+                
+        sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)
@@ -164,7 +165,8 @@ while True:
         display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
         """
         try:
-            display_image = get_api_image(URI+"/waifu/")
+            #display_image = get_api_image(URI+"/waifu/")
+            display_image = get_api_image(URI+"/stored_waifu/")
         except:
             display_image = display_image
         
@@ -237,6 +239,8 @@ while True:
         sleep_us(CATHODE_PULSE_WIDTH)
         individual_cathode_rst.value(0)
         
+
+    
     group_cathode_rst.value(1)
     sleep_us(CATHODE_PULSE_WIDTH)
     group_cathode_rst.value(0)

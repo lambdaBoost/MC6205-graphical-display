@@ -97,3 +97,11 @@ async def get_waifu():
     display_image = image_tools.return_waifu()
     json_compatible_item_data = jsonable_encoder(display_image)
     return JSONResponse(content=json_compatible_item_data)
+
+
+@app.get("/stored_waifu/")
+async def get_stored_waifu():
+    
+    display_image = image_tools.return_random_from_directory("imgs/anime_dataset/archive/images")
+    json_compatible_item_data = jsonable_encoder(display_image)
+    return JSONResponse(content=json_compatible_item_data)

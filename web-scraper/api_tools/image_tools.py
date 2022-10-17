@@ -1,6 +1,8 @@
 from PIL import Image, ImageEnhance
 import numpy as np
 import requests
+import os
+import random
 from io import BytesIO
 
 
@@ -95,13 +97,13 @@ def return_binary_image(file, save = False):
     display_image = [[binary_list_to_int(word) for word in row] for row in display_image]
 
 
-def return_grayscale_image(file, save = False):
+def return_grayscale_image(file, contrast_ratio=1,save = False):
     """
     process and return 2 arrays to be used for frame rate
     controlled 4 bit grayscale image
     """
     image = Image.open(file)
-    imgage = increase_contrast(image, 2)
+    image = increase_contrast(image, contrast_ratio)
     image = image.resize((100,100)) #simple resizing for now
     image = image.rotate(90)
     image = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT) 
@@ -140,6 +142,7 @@ def crop_image(im):
     """
     automatically crops the top segment of a PIL image
     into a square
+    
     """
     w = im.width
     h=im.height
@@ -175,6 +178,7 @@ def return_waifu():
     response = requests.get(image_url)
     img = Image.open(BytesIO(response.content))
     img = crop_image(img)
+    img = increase_contrast(img, 4)
     
     #write to disk for now
     #should refactor grayscale method later
@@ -182,3 +186,14 @@ def return_waifu():
     grayscale_image = return_grayscale_image("./imgs/current_img.png")
     
     return grayscale_image
+
+def return_random_from_directory(dirct):
+    """
+    returns random image from directory, processed appropriately
+    """
+    f = random.choice(os.listdir(dirct))
+    img = return_grayscale_image(os.path.join(dirct,f))
+    
+    return img
+    
+    
