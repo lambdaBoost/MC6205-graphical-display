@@ -19,8 +19,8 @@ except:
   import socket
   
 MIN_IMAGE_NUMBER = 1 #min image designation in folder
-MAX_IMAGE_NUMBER = 17
-FRAME_DELAY = 60 #delay between images (seconds)
+MAX_IMAGE_NUMBER = 20
+FRAME_DELAY = 10 #delay between images (seconds)
 
 CATHODE_PULSE_WIDTH = 1
 CATHODE_HOLD_TIME = 0
@@ -58,7 +58,7 @@ wlan_status = wlan.status()
 
 #options for the api
 #display_image = get_api_image(URI+"/test_image/")
-#image_list = [str(i) for i in range(MIN_IMAGE_NUMBER, MAX_IMAGE_NUMBER + 1)]
+image_list = [str(i) for i in range(MIN_IMAGE_NUMBER, MAX_IMAGE_NUMBER + 1)]
 #display_image = get_api_image(URI+"/test_grayscale_image/")
 
 
@@ -132,9 +132,9 @@ sleep_us(CATHODE_PULSE_WIDTH)
 individual_cathode_rst.value(0)
 
 loop_start_time = time()
-#img_counter = 0
-#display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
-display_image = get_api_image(URI+"/waifu/")
+img_counter = MAX_IMAGE_NUMBER-1
+display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
+
 
 
 while True:
@@ -154,20 +154,17 @@ while True:
         sm0.put(0b000000000000000000000000000000)
         sm0.put(0b000000000000000000000000000000)
         
-        """
+
         #if loading images from folder
-        if img_counter <= len(image_list)-2:
-            img_counter = img_counter + 1
+        if img_counter <= 1:
+            img_counter = MAX_IMAGE_NUMBER-1
             
         else:
-            img_counter = 0
+            img_counter = img_counter-1
             
         display_image = get_api_image(URI+"/grayscale_image/"+"?image_id=" + image_list[img_counter])
-        """
-        try:
-            display_image = get_api_image(URI+"/waifu/")
-        except:
-            display_image = display_image
+
+
         
     
     anode_count = 0
